@@ -24,6 +24,7 @@ import {
   ReactQueryIcon,
   ReduxIcon,
   SassIcon,
+  SocketioIcon,
   TailwindcssIcon,
   TypescriptIcon,
   UbuntuIcon,
@@ -239,6 +240,13 @@ const Resume = () => {
               <Icons.express className="size-[70px]" />
               <CardDescription className="mt-2 text-xl font-semibold">
                 Express JS
+              </CardDescription>
+            </div>
+
+            <div className="col-span-1 inline-flex flex-col items-center justify-end">
+              <Icons.socketio className="size-[70px]" />
+              <CardDescription className="mt-2 text-xl font-semibold">
+                Socket IO
               </CardDescription>
             </div>
 
