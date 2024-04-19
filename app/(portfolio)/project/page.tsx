@@ -78,6 +78,33 @@ const Project = () => {
       technologies: ["NextJs", "Vercel", "CSS modules (SCSS)"],
       github: null,
       website: "https://mlops.vn/marathon",
+      category: "Front-end",
+    },
+    {
+      title: "Discord clone",
+      image:
+        "https://res.cloudinary.com/dpkkgg1hf/image/upload/v1713024358/Portfolio/discord-clone_kkuqz4.png",
+      summary:
+        "This project is an ambitious full-stack endeavor replicating the core functionalities of Discord.",
+      overview: [
+        "This project is an ambitious full-stack endeavor replicating the core functionalities of Discord.",
+        "This clone is built using a modern tech stack including Next.js, Socket.io, Tailwind CSS, and Node.js, among others.",
+        " Key features include real-time messaging, voice and video calls, infinite message loading, and comprehensive server customization. ",
+      ],
+      technologies: [
+        "Next.js",
+        "Socket.io",
+        "Tailwind CSS",
+        "React Hook Form",
+        "Express",
+        "Prisma",
+        "Node.js",
+        "My SQL",
+        "Docker",
+      ],
+      github: "https://github.com/jCool10/discord-clone",
+      website: "https://jcool-discord-clone.vercel.app/",
+      category: "Full stack",
     },
     {
       title: "Shopee clone",
@@ -99,18 +126,8 @@ const Project = () => {
       ],
       github: "https://github.com/jCool10/Shopee-Clone",
       website: "https://jcool-shopee.netlify.app/",
+      category: "Front-end",
     },
-    // {
-    //   title: "The Pioneer Website",
-    //   image:
-    //     "https://res.cloudinary.com/dpkkgg1hf/image/upload/v1692627296/Portfolio/pioneerclub_kprxiy.png",
-    //   summary:
-    //     "This project involves creating a user-interface clone of the Shopee e-commerce platform.",
-    //   overview: [
-    //     "This project involves creating a user-interface clone of the Shopee e-commerce platform. The goal is to replicate the user experience and design elements of the Shopee website. This includes developing similar features and functionalities to provide users with a familiar and intuitive shopping interface. The project aims to offer a seamless shopping experience akin to Shopee, enhancing user engagement and interaction.",
-    //   ],
-    //   technologies: [""],
-    // },
   ]
 
   return (
@@ -137,9 +154,14 @@ const Project = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {projectsData.map((project, index) => (
-            <ProjectCard projectData={project} key={index} />
-          ))}
+          {projectsData
+            .filter((project) => {
+              if (filter === "All") return true
+              return project.category === filter
+            })
+            .map((project, index) => (
+              <ProjectCard projectData={project} key={index} />
+            ))}
         </div>
       </CardContent>
     </Card>

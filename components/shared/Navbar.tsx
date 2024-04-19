@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed bottom-0 left-0 z-30  w-full lg:absolute lg:right-0 lg:top-0 lg:mb-4 lg:flex lg:h-20 lg:justify-end">
-      <Card className="flex justify-center gap-10 px-8 py-2 ">
+      <Card className=" flex justify-center gap-5 px-8 md:gap-10 ">
         {navigationLinks.map((item, index) => (
           <CardTitle key={index}>
             <Button

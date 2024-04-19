@@ -51,11 +51,11 @@ const ProjectModel = ({
       </CardHeader>
 
       <CardContent className="flex flex-col gap-4">
-        <div className="grid w-full grid-cols-2">
+        <div className="grid w-full grid-cols-1 md:grid-cols-2">
           {github && (
-            <CardContent className="col-span-1 flex gap-2">
+            <CardContent className="col-span-1 flex gap-2 pl-0">
               <Button
-                className="p2  rounded-lg"
+                className="rounded-lg p-2"
                 variant="secondary"
                 size="icon"
               >
@@ -76,7 +76,7 @@ const ProjectModel = ({
           )}
 
           {website && (
-            <CardContent className="col-span-1 flex gap-2">
+            <CardContent className="col-span-1 flex gap-2 pl-0">
               <Button className="rounded-lg p-2 " variant="secondary">
                 <Globe />
               </Button>
@@ -100,9 +100,9 @@ const ProjectModel = ({
         ))}
 
         <CardTitle>Stack/Technologies</CardTitle>
-        <div className="flex">
+        <div className="">
           {technologies.map((item, index) => (
-            <Badge key={index} className="mr-2 text-base">
+            <Badge key={index} className="mb-2 mr-2 text-base">
               {item}
             </Badge>
           ))}
