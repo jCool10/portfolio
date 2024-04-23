@@ -1,30 +1,39 @@
-import React from "react"
+import { Metadata } from "next"
 import { posts } from "#site/content"
+import { slug } from "github-slugger"
 
-import { getAllTags, sortPosts, sortTagsByCount } from "@/lib/utils"
+import { getAllTags, getPostsByTagSlug, sortTagsByCount } from "@/lib/utils"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import PostItem from "@/components/shared/PostItem"
-import { QueryPagination } from "@/components/shared/QueryPagination"
 import Tag from "@/components/shared/Tag"
 
-interface Props {
-  searchParams: {
-    page?: string
+interface TagPageProps {
+  params: {
+    tag: string
   }
 }
 
-const POSTS_PER_PAGE = 5
+export async function generateMetadata({
+  params,
+}: TagPageProps): Promise<Metadata> {
+  const { tag } = params
+  return {
+    title: tag,
+    description: `Posts on the topic of ${tag}`,
+  }
+}
 
-const Blog = ({ searchParams }: Props) => {
-  const currentPage = Number(searchParams?.page) || 1
-  const sortedPosts = sortPosts(posts.filter((post) => post.published))
-  const totalPages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE)
+export const generateStaticParams = () => {
+  const tags = getAllTags(posts)
+  const paths = Object.keys(tags).map((tag) => ({ tag: slug(tag) }))
+  return paths
+}
 
-  const displayPosts = sortedPosts.slice(
-    POSTS_PER_PAGE * (currentPage - 1),
-    POSTS_PER_PAGE * currentPage
-  )
+export default function TagPage({ params }: TagPageProps) {
+  const { tag } = params
+  const title = tag.split("-").join(" ")
 
+  const displayPosts = getPostsByTagSlug(posts, tag)
   const tags = getAllTags(posts)
   const sortedTags = sortTagsByCount(tags)
 
@@ -32,10 +41,9 @@ const Blog = ({ searchParams }: Props) => {
     <div className="container max-w-4xl py-6 lg:py-10">
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
         <div className="flex-1 space-y-4">
-          <h1 className="inline-block text-4xl font-black lg:text-5xl">Blog</h1>
-          <p className="text-xl text-muted-foreground">
-            My ramblings on all things web dev.
-          </p>
+          <h1 className="inline-block text-4xl font-black capitalize lg:text-5xl">
+            {title}
+          </h1>
         </div>
       </div>
       <div className="mt-8 grid grid-cols-12 gap-3">
@@ -61,18 +69,14 @@ const Blog = ({ searchParams }: Props) => {
           ) : (
             <p>Nothing to see here yet</p>
           )}
-          <QueryPagination
-            totalPages={totalPages}
-            className="mt-4 justify-end"
-          />
         </div>
         <Card className="col-span-12 row-start-3 h-fit sm:col-span-4 sm:col-start-9 sm:row-start-1">
           <CardHeader>
             <CardTitle>Tags</CardTitle>
           </CardHeader>
           <CardContent className="flex flex-wrap gap-2">
-            {sortedTags?.map((tag) => (
-              <Tag tag={tag} key={tag} count={tags[tag]} />
+            {sortedTags?.map((t) => (
+              <Tag tag={t} key={t} count={tags[t]} current={slug(t) === tag} />
             ))}
           </CardContent>
         </Card>
@@ -80,5 +84,3 @@ const Blog = ({ searchParams }: Props) => {
     </div>
   )
 }
-
-export default Blog
