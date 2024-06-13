@@ -1,14 +1,14 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
+import { Inter } from "next/font/google"
 
 import { siteConfig } from "@/config/site"
-import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
-import Navbar from "@/components/shared/Navbar"
-import Sidebar from "@/components/shared/Sidebar"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
 export const metadata: Metadata = {
   title: {
@@ -38,7 +38,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <body
           className={cn(
             "min-h-screen bg-background font-sans antialiased",
-            fontSans.variable
+            inter.variable
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

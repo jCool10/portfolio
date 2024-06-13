@@ -18,13 +18,11 @@ import {
   PhotoshopIcon,
   PostgresqlIcon,
   PostmanIcon,
-  PrismaIcon,
   PythonIcon,
   ReactIcon,
   ReactQueryIcon,
   ReduxIcon,
   SassIcon,
-  SocketioIcon,
   TailwindcssIcon,
   TypescriptIcon,
   UbuntuIcon,
@@ -95,7 +93,7 @@ const Resume = () => {
       },
       {
         icon: MuiIcon,
-        title: "MaterialUI",
+        title: "Material UI",
       },
       {
         icon: SassIcon,
@@ -214,6 +212,13 @@ const Resume = () => {
               <Icons.logo className="size-[70px]" />
               <CardDescription className="mt-2 text-xl font-semibold">
                 Next JS
+              </CardDescription>
+            </div>
+
+            <div className="col-span-1 inline-flex flex-col items-center justify-end">
+              <Icons.shadcnui className="size-[70px]" />
+              <CardDescription className="mt-2 text-xl font-semibold">
+                Shadcn ui
               </CardDescription>
             </div>
           </CardContent>

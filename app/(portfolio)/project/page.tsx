@@ -2,7 +2,6 @@
 
 import React, { useState } from "react"
 import Image from "next/image"
-import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -71,9 +70,8 @@ const Project = () => {
       summary:
         "Create the MLOps Marathon website for the inaugural MLOps Marathon 2023 competition in Vietnam.",
       overview: [
-        "In this project, I participated in building the website for the MLOps Marathon 2023 competition, the first MLOps (Machine Learning Operations) competition in Vietnam.",
-        "The main goal of the project was to create an efficient website optimized for fast loading speed and responsive across various mobile devices and platforms.",
-        "The project was successfully completed with optimized loading speed and a responsive interface, ensuring that the MLOps Marathon 2023 website delivers a great userexperience and serves the competition effectively.",
+        "Project Description: Developed the MLOps Marathon website for the 2023 MLOps Marathon competition, the first competition on Machine Learning Operations (MLOps) in Vietnam",
+        "Role and Responsibilities: Designed a mobile-friendly interface to ensure responsiveness across different platforms. Additionally, optimized the website to ensure fast loading speeds and a good user experience.",
       ],
       technologies: ["NextJs", "Vercel", "CSS modules (SCSS)"],
       github: null,
@@ -87,9 +85,9 @@ const Project = () => {
       summary:
         "This project is an ambitious full-stack endeavor replicating the core functionalities of Discord.",
       overview: [
-        "This project is an ambitious full-stack endeavor replicating the core functionalities of Discord.",
-        "This clone is built using a modern tech stack including Next.js, Socket.io, Tailwind CSS, and Node.js, among others.",
-        " Key features include real-time messaging, voice and video calls, infinite message loading, and comprehensive server customization. ",
+        "Project Description: Developed an instant messaging application similar to Discord, supporting messaging, audio and video calls, and member management. The project used full-stack technology with real-time messaging functionality, member management, and diverse communication channels.",
+        "Role and Responsibilities: Designed and developed key functionalities, including real-time communication and user authentication, as well as the user interface design.",
+        "Key features include real-time messaging, voice and video calls, infinite message loading, and comprehensive server customization. ",
       ],
       technologies: [
         "Next.js",
@@ -113,7 +111,8 @@ const Project = () => {
       summary:
         "This project involves creating a user-interface clone of the Shopee e-commerce platform.",
       overview: [
-        "This project involves creating a user-interface clone of the Shopee e-commerce platform. The goal is to replicate the user experience and design elements of the Shopee website. This includes developing similar features and functionalities to provide users with a familiar and intuitive shopping interface. The project aims to offer a seamless shopping experience akin to Shopee, enhancing user engagement and interaction.",
+        "Project Description: Developed a clone of the Shopee e-commerce website, focusing on recreating core features like product display, shopping cart management, and product filtering, ...",
+        "Role and Responsibilities: Responsible for front-end development with full functionality of the e-commerce website, ensuring features worked correctly and performance was optimized.",
       ],
       technologies: [
         "React Js",
@@ -127,6 +126,98 @@ const Project = () => {
       github: "https://github.com/jCool10/Shopee-Clone",
       website: "https://jcool-shopee.netlify.app/",
       category: "Front-end",
+    },
+    {
+      title: "My Portfolio",
+      image:
+        "https://res.cloudinary.com/dpkkgg1hf/image/upload/v1714404529/Portfolio_t3qbys.png",
+      summary:
+        "This project involves creating a user-interface clone of the Shopee e-commerce platform.",
+      overview: [
+        "Project Description: Developed a personal website with a blog using Next.js, showcasing projects and sharing knowledge through articles.",
+        "Role and Responsibilities: Designed and developed the entire website.",
+      ],
+      technologies: [
+        "Next JS",
+        "Tailwind CSS",
+        "Shadcn UI",
+        "Velite",
+        "Next Themes",
+        "React Hook Form,",
+      ],
+      github: "https://github.com/jCool10/portfolio",
+      website: "https://jcool-portfolio.vercel.app/",
+      category: "Front-end",
+    },
+    {
+      title: "E-commerce Backend",
+      image:
+        "https://res.cloudinary.com/dpkkgg1hf/image/upload/v1714404529/Portfolio_t3qbys.png",
+      summary:
+        "This project involves creating a user-interface clone of the Shopee e-commerce platform.",
+      overview: [
+        "Project Description: Developed the backend for an e-commerce application using Node.js and TypeScript. Provided a fully functional API for an e-commerce application. Implemented CI/CD with Docker and GitHub Actions to automate the development, testing, and deployment process, ensuring code consistency and efficiency. Used Swagger for API documentation.",
+        "Role and Responsibilities: Programmed and designed the database structure, developed API endpoints, set up and configured CI/CD, and secured customer information.",
+      ],
+      technologies: [
+        "Node JS",
+        "Typescript",
+        "Docker",
+        "Swagger",
+        "MongoDB",
+        "Express JS",
+        "Json Web Token",
+      ],
+      github: "https://github.com/jCool10/BE-ecommerce-TS-",
+      website: null,
+      category: "Back-end",
+    },
+    {
+      title: "Scientific Research Project: Chat PDF",
+      image:
+        "https://res.cloudinary.com/dpkkgg1hf/image/upload/v1714404529/Portfolio_t3qbys.png",
+      summary:
+        "This project involves creating a user-interface clone of the Shopee e-commerce platform.",
+      overview: [
+        "Project Description: Developed the ChatPDF website integrating Large Language Models (LLMs) to enhance the interaction and information access process within PDF documents. The system supports extracting, normalizing, and querying information quickly and accurately, using natural language processing techniques and vector databases.",
+        "Role and Responsibilities: Developed the Frontend with Next.js and Tailwind CSS, designed user interaction flows, integrated LLMs for natural language processing. Managed Backend development with Node.js, ExpressJS, and implemented data processing and storage solutions using MongoDB, AWS S3,and Pinecone.",
+      ],
+      technologies: [
+        "Next JS",
+        "Tailwind CSS",
+        "Clerk",
+        "Express JS",
+        "NodeJS",
+        "Langchain",
+        "OpenAI",
+        "MongoDB",
+        "AWS S3",
+        "Pinecone",
+      ],
+      github: "https://github.com/jCool10/ChatPDF",
+      website: null,
+      category: "Full stack",
+    },
+    {
+      title: "The Pioneer Website",
+      image:
+        "https://res.cloudinary.com/dpkkgg1hf/image/upload/v1692627296/Portfolio/pioneerclub_kprxiy.png",
+      summary:
+        "This project involves creating a user-interface clone of the Shopee e-commerce platform.",
+      overview: [
+        "Project Description: Developed the interface for the `Pioneer Student Research Club`, based on a pre-existing design.",
+        "Role and Responsibilities: Served as the project leader, assigning tasks to team members and ensuring project progress. Also responsible for front-end development, supporting and guiding team members, and resolving technical issues.",
+      ],
+      technologies: [
+        "ReactJS",
+        "Axios",
+        "React Router Dom",
+        "CSS module (SCSS)",
+        "React Redux",
+      ],
+      github: null,
+      website: "https://pioneerclub.netlify.app/",
+      category: "Full - stack",
     },
   ]
 
