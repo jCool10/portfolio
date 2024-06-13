@@ -106,7 +106,7 @@ const Sidebar = () => {
       {/* <div className="h-px w-full bg-neutral-700" /> */}
       <Button className="m-auto" variant="secondary">
         <Link
-          href="/CV-HoangNgocLoc.pdf"
+          href="/CV_Hoang Ngoc Loc_Web.pdf"
           download
           className="flex items-center justify-center gap-3 rounded-full "
         >

@@ -26,4 +26,4 @@ export { default as UbuntuIcon } from './ubuntu-color.svg';
 export { default as PrismaIcon } from './prisma-color.svg';
 export { default as PostgresqlIcon } from './postgresql-color.svg';
 export {default as SocketioIcon} from './socketdotio-color.svg';
-
+export {default as ShadcnuiIcon} from './shadcnui.svg';

@@ -4,6 +4,8 @@ import { posts } from "#site/content"
 import { MDXContent } from "@/components/shared/MDXContent"
 import Tag from "@/components/shared/Tag"
 
+import "../../../styles/mdx.css"
+
 interface Props {
   params: {
     slug: string[]

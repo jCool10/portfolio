@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "#site/content": ["./.velite"]
+      "#site/content": ["./.velite"],
+      "@/styles": ["./styles"]
     },
     "plugins": [
       {
