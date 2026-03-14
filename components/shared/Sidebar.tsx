@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import {
   AtSign,
+  Circle,
   Download,
   Facebook,
   Github,
@@ -15,102 +16,133 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
-  CardHeader,
   CardTitle,
 } from "../ui/card"
-import { Separator } from "../ui/separator"
+
+const socialLinks = [
+  {
+    href: "https://www.facebook.com/reddevils.1908",
+    icon: Facebook,
+    label: "Facebook profile",
+  },
+  {
+    href: "https://www.linkedin.com/in/hoang-ngoc-loc/",
+    icon: Linkedin,
+    label: "LinkedIn profile",
+  },
+  {
+    href: "https://github.com/jCool10",
+    icon: Github,
+    label: "GitHub profile",
+  },
+]
+
+const contactInfo = [
+  {
+    icon: AtSign,
+    label: "Email",
+    value: "hngloc10@gmail.com",
+    href: "mailto:hngloc10@gmail.com",
+  },
+  {
+    icon: Phone,
+    label: "Phone number",
+    value: "0374830117",
+    href: "tel:+84374830117",
+  },
+]
 
 const Sidebar = () => {
   return (
-    <div className="relative flex w-full flex-col items-start justify-center gap-8 rounded-2xl bg-white/20 p-4 shadow backdrop-blur-3xl md:p-8 xl:items-center">
-      <div className="flex items-center justify-start gap-3 xl:flex-col ">
+    <div className="relative flex w-full flex-col items-start justify-center gap-6 rounded-2xl bg-card/80 p-4 shadow-lg backdrop-blur-xl border border-border/50 md:p-8 xl:items-center overflow-hidden">
+      {/* Decorative accent gradient bar */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent via-accent/50 to-transparent" />
+
+      {/* Avatar + Name + Role */}
+      <div className="flex items-center justify-start gap-3 xl:flex-col">
         <Image
-          className="rounded-[2rem]  "
+          className="rounded-[2rem] ring-2 ring-accent/20 ring-offset-2 ring-offset-background"
           src="/197475999.jpg"
-          alt="avatar"
-          width={100}
-          height={100}
-          sizes="fill"
+          alt="Hoang Ngoc Loc - Web Developer"
+          width={150}
+          height={150}
+          priority
         />
-        <div className="flex flex-col  justify-center gap-2 xl:items-center xl:gap-4">
-          <div className="text-center text-xl font-bold leading-9 md:text-3xl">
+        <div className="flex flex-col justify-center gap-2 xl:items-center xl:gap-3">
+          <div className="text-center text-xl font-bold font-heading leading-9 md:text-3xl">
             Hoang Ngoc Loc
           </div>
-          <div className="text-sm font-medium leading-10 opacity-50 md:text-base">
+          <div className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent md:text-sm">
             Web Development
           </div>
 
-          <div className="flex items-center gap-2">
-            <Button className="rounded-lg p-2 " variant="secondary">
-              <Link
-                href="https://www.facebook.com/reddevils.1908"
-                target="_blank"
-              >
-                <Facebook />
-              </Link>
-            </Button>
+          {/* Availability status */}
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Circle className="size-2 fill-emerald-500 text-emerald-500 animate-pulse" />
+            Available for work
+          </div>
 
-            <Button className="rounded-lg p-2" variant="secondary">
-              <Link
-                href="https://www.linkedin.com/in/hoang-ngoc-loc/"
-                target="_blank"
+          {/* Social links */}
+          <div className="flex items-center gap-2">
+            {socialLinks.map((link) => (
+              <Button
+                key={link.label}
+                className="rounded-lg p-2 transition-all duration-300 hover:scale-110 hover:bg-accent hover:text-accent-foreground cursor-pointer"
+                variant="secondary"
+                size="icon"
+                asChild
               >
-                <Linkedin />
-              </Link>
-            </Button>
-            <Button className="rounded-lg p-2" variant="secondary">
-              <Link href="https://github.com/jCool10" target="_blank">
-                <Github />
-              </Link>
-            </Button>
+                <Link
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                >
+                  <link.icon className="size-4" />
+                </Link>
+              </Button>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* <div className="h-px w-full bg-neutral-700" /> */}
-      {/* <Separator orientation="vertical" /> */}
+      {/* Separator */}
+      <div className="w-full h-px bg-border" />
 
+      {/* Contact info */}
       <Card className="grid w-full grid-cols-1 gap-4 pt-6 lg:grid-cols-2 xl:grid-cols-1">
-        <CardContent className="col-span-1 flex gap-2">
-          <Button className="rounded-lg p-2 " variant="secondary">
-            <AtSign />
-          </Button>
-
-          <div>
-            <CardTitle className="text-sm font-semibold opacity-50">
-              Email
-            </CardTitle>
-            <CardDescription className="text-sm font-semibold">
-              <Link href="mailto:hngloc10@gmail.com">hngloc10@gmail.com</Link>
-            </CardDescription>
-          </div>
-        </CardContent>
-
-        <CardContent className="col-span-1 flex gap-2">
-          <Button className="rounded-lg p-2 " variant="secondary">
-            <Phone />
-          </Button>
-
-          <div>
-            <CardTitle className="text-sm font-semibold opacity-50">
-              Phone number
-            </CardTitle>
-            <CardDescription className="text-sm font-semibold">
-              <Link href="tel:+84374830117">0374830117</Link>
-            </CardDescription>
-          </div>
-        </CardContent>
+        {contactInfo.map((info) => (
+          <CardContent key={info.label} className="col-span-1 flex gap-2">
+            <Button
+              className="rounded-lg p-2 cursor-default"
+              variant="secondary"
+              size="icon"
+            >
+              <info.icon aria-hidden="true" className="size-4" />
+            </Button>
+            <div>
+              <CardTitle className="text-sm font-semibold text-muted-foreground">
+                {info.label}
+              </CardTitle>
+              <CardDescription className="text-sm font-semibold">
+                <Link href={info.href}>{info.value}</Link>
+              </CardDescription>
+            </div>
+          </CardContent>
+        ))}
       </Card>
 
-      {/* <div className="h-px w-full bg-neutral-700" /> */}
-      <Button className="m-auto" variant="secondary">
+      {/* Download CV */}
+      <Button
+        className="m-auto gap-2 bg-accent text-accent-foreground hover:bg-accent/90 transition-all duration-300 group cursor-pointer"
+        asChild
+      >
         <Link
           href="/CV_Hoang Ngoc Loc_Web.pdf"
           download
-          className="flex items-center justify-center gap-3 rounded-full "
+          className="flex items-center gap-2"
         >
-          <Download />
+          <Download className="size-4 transition-transform duration-300 group-hover:translate-y-0.5" />
           Download CV
         </Link>
       </Button>

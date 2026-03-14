@@ -1,0 +1,17 @@
+! The local project doesn't define a 'packageManager' field. Corepack will now add one referencing yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e.
+! For more details about this field, consult the documentation at https://nodejs.org/api/packages.html#packagemanager
+
+yarn run v1.22.22
+$ next dev
+npm warn Unknown env config "version-git-tag". This will stop working in the next major version of npm.
+npm warn Unknown env config "argv". This will stop working in the next major version of npm.
+npm warn Unknown env config "version-commit-hooks". This will stop working in the next major version of npm.
+npm warn Unknown env config "version-git-message". This will stop working in the next major version of npm.
+npm warn Unknown env config "version-tag-prefix". This will stop working in the next major version of npm.
+[32m[VELITE][0m build finished in 293.06ms
+[32m[VELITE][0m watching for changes in 'content' 
+  ▲ Next.js 13.5.6
+  - Local:        http://localhost:3000
+
+ ✓ Ready in 1631ms
+[?25h

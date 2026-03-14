@@ -34,7 +34,7 @@ const ProjectModel = ({
   return (
     <>
       <CardHeader>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle className="font-heading">{title}</CardTitle>
         <CardDescription>
           <Image
             alt="Image"
@@ -67,7 +67,7 @@ const ProjectModel = ({
                   Github
                 </CardTitle>
                 <CardDescription className="text-sm font-semibold">
-                  <Link href={github} target="_blank">
+                  <Link href={github} target="_blank" rel="noopener noreferrer">
                     {github}
                   </Link>
                 </CardDescription>
@@ -86,7 +86,7 @@ const ProjectModel = ({
                   Website
                 </CardTitle>
                 <CardDescription className="text-sm font-semibold">
-                  <Link href={website} target="_blank">
+                  <Link href={website} target="_blank" rel="noopener noreferrer">
                     {website}
                   </Link>
                 </CardDescription>
@@ -94,12 +94,12 @@ const ProjectModel = ({
             </CardContent>
           )}
         </div>
-        <CardTitle>Overview</CardTitle>
+        <CardTitle className="font-heading">Overview</CardTitle>
         {overviews.map((item, index) => (
           <p key={index}>{item}</p>
         ))}
 
-        <CardTitle>Stack/Technologies</CardTitle>
+        <CardTitle className="font-heading">Stack/Technologies</CardTitle>
         <div className="">
           {technologies.map((item, index) => (
             <Badge key={index} className="mb-2 mr-2 text-base">

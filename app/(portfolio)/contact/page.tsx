@@ -1,8 +1,9 @@
 "use client"
 
 import React from "react"
-import { yupResolver } from "@hookform/resolvers/yup"
+import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
+import * as z from "zod"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -17,24 +18,41 @@ import {
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 
-const Contact = () => {
-  const form = useForm()
+const contactSchema = z.object({
+  fullname: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+})
 
-  const onSubmit = async (values: any) => {
-    console.log(123)
+const Contact = () => {
+  const form = useForm<z.infer<typeof contactSchema>>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      fullname: "",
+      email: "",
+      message: "",
+    },
+  })
+
+  const onSubmit = async (values: z.infer<typeof contactSchema>) => {
+    alert("Thank you for your message! I will get back to you soon.")
+    form.reset()
   }
 
   return (
-    <Card>
+    <Card className="animate-fade-in-up">
       <CardHeader>
-        <CardTitle className="relative text-4xl font-bold after:absolute after:bottom-3 after:ml-[5px] after:inline-block after:h-1 after:w-1/4 after:bg-primary after:content-['']">
+        <CardTitle className="relative text-4xl font-bold font-heading after:absolute after:bottom-3 after:ml-[5px] after:inline-block after:h-1 after:w-1/4 after:rounded-full after:bg-accent after:content-['']">
           Contact
         </CardTitle>
+        <p className="mt-2 text-muted-foreground">
+          Have a question or want to work together? Drop me a message below.
+        </p>
       </CardHeader>
 
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               control={form.control}
               name="fullname"
@@ -72,7 +90,7 @@ const Contact = () => {
                   <FormControl>
                     <Textarea
                       placeholder="Message"
-                      className=" resize-none"
+                      className="resize-none"
                       {...field}
                     />
                   </FormControl>
@@ -80,8 +98,11 @@ const Contact = () => {
                 </FormItem>
               )}
             />
-            <Button className="" type="submit">
-              Submit
+            <Button
+              className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 transition-all duration-300 cursor-pointer px-8"
+              type="submit"
+            >
+              Send Message
             </Button>
           </form>
         </Form>
