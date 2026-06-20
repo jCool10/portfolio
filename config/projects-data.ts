@@ -18,6 +18,62 @@ export const projectCategories = [
 
 export const projectsData: ProjectData[] = [
   {
+    title: "jCool E-Commerce — NestJS Microservices Platform",
+    image:
+      "https://res.cloudinary.com/dpkkgg1hf/image/upload/v1714404529/Portfolio_t3qbys.png",
+    summary:
+      "Portfolio-grade e-commerce platform with 6 NestJS microservices and 2 Next.js frontends in a Turborepo monorepo.",
+    overview: [
+      "Project Description: Designed and built a portfolio-grade e-commerce platform: 6 NestJS microservices (API Gateway, Auth, Catalog, Search, Order, Email Worker) + 2 Next.js frontends (Storefront, Admin) in a Turborepo + pnpm monorepo, with multi-currency support (USD + VND, integer subunits, no FX).",
+      "Architecture: Applied Hexagonal Architecture, Result<T, E> error handling, Saga orchestration with compensation, and Transactional Outbox (domain mutation + outbox row in one Prisma transaction; 1s poller drains to RabbitMQ topic exchange).",
+      "Key Engineering: Idempotent Stripe webhook handling via Postgres UNIQUE constraint + advisory locks; deadlock-free inventory reservation using SELECT ... FOR UPDATE ordered by SKU; FSM enforced inside the aggregate root.",
+      "Infra & Observability: Event-driven Elasticsearch indexing with blue-green alias swap; BullMQ + MJML/Handlebars email pipeline; JWT (RS256) refresh-token auth; full observability with Pino + OpenTelemetry + Grafana / Loki / Tempo / Prometheus + Sentry.",
+    ],
+    technologies: [
+      "NestJS",
+      "Next.js 14",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+      "RabbitMQ",
+      "Elasticsearch",
+      "Stripe",
+      "Docker",
+      "Turborepo",
+    ],
+    github: "https://github.com/jCool10/jCool-ecommerce",
+    website: null,
+    category: "Full stack",
+  },
+  {
+    title: "Capstone — RAG Chat with PDF",
+    image:
+      "https://res.cloudinary.com/dpkkgg1hf/image/upload/v1714404529/Portfolio_t3qbys.png",
+    summary:
+      "Microservices RAG system for Q&A over PDF/DOCX/TXT documents with hybrid search and reranking.",
+    overview: [
+      "Project Description: Built a microservices RAG system for Q&A over PDF/DOCX/TXT documents: Next.js 14 client (App Router, shadcn/ui, React Query) + Node.js/Express/TypeScript API + Python FastAPI RAG service — fully containerized via Docker Compose (etcd + MinIO + Milvus).",
+      "RAG Pipeline: Implemented end-to-end RAG with BAAI/bge-m3 embeddings (1024-dim) and hybrid search (Milvus dense + BM25 sparse) fused via RRF, with cross-encoder reranking (ms-marco-MiniLM-L-6-v2); remote LLM (Llama 3.2 3B) served via HTTP.",
+      "Backend & Security: Designed backend with JWT RS256 auth, per-user RSA 2048 keypair encryption, workspace isolation, AWS S3 file storage, MongoDB persistence, Winston structured logging, and security middleware (Helmet, CORS, rate limiting).",
+      "Frontend UX: Source-attributed answers with conversation history; Axios interceptor for JWT refresh-on-401 with queued retries; EN→VI translation pipeline for multi-language support.",
+    ],
+    technologies: [
+      "Next.js 14",
+      "Express.js",
+      "TypeScript",
+      "Python (FastAPI)",
+      "LangChain",
+      "Milvus",
+      "MongoDB",
+      "AWS S3",
+      "Docker Compose",
+    ],
+    github: "https://github.com/jCool10/capstone-project",
+    website: null,
+    category: "Full stack",
+  },
+  {
     title: "MLOps Marathon 2023",
     image:
       "https://res.cloudinary.com/dpkkgg1hf/image/upload/v1692502392/Portfolio/mlops_wtqosq.png",

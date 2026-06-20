@@ -29,18 +29,26 @@ const Blog = ({ searchParams }: Props) => {
   const sortedTags = sortTagsByCount(tags)
 
   return (
-    <div className="container max-w-5xl py-6 lg:py-10">
+    <div className="container max-w-5xl py-10 lg:py-16">
       <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
-        <div className="flex-1 space-y-4">
-          <h1 className="inline-block text-4xl font-black lg:text-5xl">Blog</h1>
-          <p className="text-xl text-muted-foreground">
-            My ramblings on all things web dev.
+        <div className="flex-1 space-y-3">
+          <div className="eyebrow">
+            <span>00</span>
+            <span aria-hidden>—</span>
+            <span>Blog</span>
+          </div>
+          <h1 className="display text-balance text-4xl leading-[1.05] lg:text-5xl">
+            Notes from the <span className="italic text-accent">workshop</span>.
+          </h1>
+          <p className="max-w-[58ch] text-pretty leading-relaxed text-muted-foreground">
+            Ramblings on web dev, software architecture, and things I learn
+            while shipping.
           </p>
         </div>
       </div>
-      <div className="mt-8 grid grid-cols-12 gap-3">
+      <div className="mt-10 grid grid-cols-12 gap-6">
         <div className="col-span-12 col-start-1 sm:col-span-8">
-          <hr />
+          <div className="hairline mb-2" />
           {displayPosts?.length > 0 ? (
             <ul className="flex flex-col">
               {displayPosts.map((post) => {

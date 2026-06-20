@@ -2,69 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Design tokens — "Editorial-Technical"
+ * Warm paper × engineer's workshop. Single confident orange accent.
+ * Light and dark are designed independently (not inverted) so contrast,
+ * warmth, and accent saturation feel natural in each mode.
+ */
 @layer base {
   :root {
-    --background: 0 0% 98%;
-    --foreground: 0 0% 4%;
-
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 4%;
-
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
+    /* Surfaces — warm paper hierarchy */
+    --background: 40 28% 97%;        /* #FAF9F6 */
+    --surface: 0 0% 100%;            /* card body */
+    --elevated: 40 24% 94%;          /* recessed wells, tag chips */
+    --foreground: 32 14% 10%;        /* warm ink */
+    --muted: 40 18% 92%;
+    --muted-foreground: 32 8% 36%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 4%;
+    --card-foreground: 32 14% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 32 14% 10%;
 
-    --primary: 240 6% 10%;
-    --primary-foreground: 0 0% 98%;
+    --border: 36 16% 86%;
+    --hairline: 36 14% 78%;          /* slightly stronger for dividers */
+    --input: 36 16% 86%;
 
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 6% 10%;
+    --primary: 32 14% 14%;
+    --primary-foreground: 40 28% 97%;
+    --secondary: 40 18% 92%;
+    --secondary-foreground: 32 14% 14%;
 
-    --accent: 217 91% 60%;
+    /* Accent — burnt orange, craftsman warm */
+    --accent: 22 92% 47%;            /* #E85D04 */
     --accent-foreground: 0 0% 100%;
+    --accent-soft: 28 100% 95%;      /* #FFF1E6 background tint */
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 70% 45%;
     --destructive-foreground: 0 0% 98%;
 
-    --ring: 217 91% 60%;
-    --radius: 0.5rem;
+    --success: 158 64% 38%;
+
+    --ring: 22 92% 47%;
+    --radius: 0.625rem;
   }
 
   .dark {
-    --background: 240 10% 4%;
-    --foreground: 0 0% 98%;
+    /* Surfaces — warm near-black hierarchy */
+    --background: 36 10% 6%;         /* #0E0D0B */
+    --surface: 36 10% 8%;            /* #15140F */
+    --elevated: 34 9% 11%;           /* #1C1A14 */
+    --foreground: 36 26% 94%;        /* warm paper */
+    --muted: 34 8% 14%;
+    --muted-foreground: 34 8% 64%;
 
-    --muted: 240 4% 16%;
-    --muted-foreground: 240 5% 65%;
+    --card: 36 10% 8%;
+    --card-foreground: 36 26% 94%;
+    --popover: 36 10% 8%;
+    --popover-foreground: 36 26% 94%;
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 100%;
+    --border: 34 8% 18%;
+    --hairline: 34 8% 22%;
+    --input: 34 8% 18%;
 
-    --popover: 240 10% 4%;
-    --popover-foreground: 0 0% 98%;
+    --primary: 36 26% 94%;
+    --primary-foreground: 36 10% 8%;
+    --secondary: 34 8% 14%;
+    --secondary-foreground: 36 26% 94%;
 
-    --border: 240 4% 16%;
-    --input: 240 4% 16%;
+    /* Accent — slightly warmer and lighter in dark mode */
+    --accent: 22 100% 58%;           /* #FF7A2E */
+    --accent-foreground: 36 10% 6%;
+    --accent-soft: 22 60% 14%;       /* deep amber wash */
 
-    --card: 240 10% 6%;
-    --card-foreground: 0 0% 98%;
+    --destructive: 0 60% 42%;
+    --destructive-foreground: 36 26% 94%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 6% 10%;
+    --success: 158 56% 50%;
 
-    --secondary: 240 4% 16%;
-    --secondary-foreground: 0 0% 98%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 0 0% 98%;
-
-    --ring: 217 91% 60%;
-    --radius: 0.5rem;
+    --ring: 22 100% 58%;
+    --radius: 0.625rem;
   }
 }
 
@@ -72,34 +88,141 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    /* Subtle dot grid for depth */
-    background-image: radial-gradient(circle, hsl(var(--border)) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
 
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "ss01" 1,    /* alt single-storey a in Geist */
+      "cv11" 1,
+      "rlig" 1,
+      "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Atmospheric background: warm radial vignette + faint grain.
+     Replaces the generic dot grid. Cheap (single CSS layer + tiny SVG noise). */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(
+        ellipse 80% 50% at 50% -10%,
+        hsl(var(--accent) / 0.08),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 100% 100%,
+        hsl(var(--accent) / 0.05),
+        transparent 60%
+      );
+    pointer-events: none;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.4;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .dark body::after {
+    opacity: 0.5;
+  }
+
+  /* Selection in accent tint */
   ::selection {
-    background-color: hsl(var(--accent) / 0.2);
+    background-color: hsl(var(--accent) / 0.25);
     color: hsl(var(--foreground));
   }
 
-  /* Respect reduced motion preference */
+  /* Respect reduced motion */
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
   }
 
-  /* Global focus-visible style */
+  /* Global focus-visible — accent ring with offset to background */
   *:focus-visible {
-    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-background rounded-sm;
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-background;
+    border-radius: calc(var(--radius) - 2px);
   }
+
+  /* Mobile inputs: 16px minimum to disable iOS auto-zoom */
+  input,
+  textarea,
+  select {
+    font-size: max(16px, 1rem);
+  }
+}
+
+@layer components {
+  /* Editorial section eyebrow: "01 — About" style */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground;
+  }
+
+  /* Hairline divider used between sections */
+  .hairline {
+    @apply h-px w-full;
+    background: linear-gradient(
+      to right,
+      transparent,
+      hsl(var(--hairline)) 15%,
+      hsl(var(--hairline)) 85%,
+      transparent
+    );
+  }
+
+  /* Display headline with serif + italic accent helper */
+  .display {
+    @apply font-heading font-medium tracking-tight;
+    font-feature-settings: "ss01" 1, "ss02" 1;
+  }
+}
+
+@layer utilities {
+  /* Animated accent dot for availability status */
+  @keyframes breathe {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.55; transform: scale(0.92); }
+  }
+  .animate-breathe {
+    animation: breathe 2.4s ease-in-out infinite;
+  }
+
+  /* Subtle entry: tighter spring-feel curve */
+  @keyframes rise {
+    0%   { opacity: 0; transform: translateY(12px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-rise {
+    animation: rise 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Staggered children helpers — used on home/resume page sections */
+  .stagger > * { opacity: 0; animation: rise 520ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .stagger > *:nth-child(1) { animation-delay: 40ms; }
+  .stagger > *:nth-child(2) { animation-delay: 120ms; }
+  .stagger > *:nth-child(3) { animation-delay: 200ms; }
+  .stagger > *:nth-child(4) { animation-delay: 280ms; }
+  .stagger > *:nth-child(5) { animation-delay: 360ms; }
+  .stagger > *:nth-child(6) { animation-delay: 440ms; }
 }

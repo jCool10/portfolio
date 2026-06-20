@@ -25,5 +25,36 @@ export { default as DockerIcon } from './docker-color.svg';
 export { default as UbuntuIcon } from './ubuntu-color.svg';
 export { default as PrismaIcon } from './prisma-color.svg';
 export { default as PostgresqlIcon } from './postgresql-color.svg';
-export {default as SocketioIcon} from './socketdotio-color.svg';
-export {default as ShadcnuiIcon} from './shadcnui.svg';
+export { default as SocketioIcon } from './socketdotio-color.svg';
+export { default as ShadcnuiIcon } from './shadcnui.svg';
+
+/* Newly added from simpleicons.org */
+export { default as ReactHookFormIcon } from './reacthookform-color.svg';
+export { default as NestjsIcon } from './nestjs-color.svg';
+export { default as GraphqlIcon } from './graphql-color.svg';
+export { default as RabbitmqIcon } from './rabbitmq-color.svg';
+export { default as KafkaIcon } from './apachekafka-color.svg';
+export { default as RedisIcon } from './redis-color.svg';
+export { default as ElasticsearchIcon } from './elasticsearch-color.svg';
+export { default as MilvusIcon } from './milvus-color.svg';
+export { default as AwsIcon } from './amazonaws-color.svg';
+export { default as AzureIcon } from './microsoftazure-color.svg';
+export { default as GcpIcon } from './googlecloud-color.svg';
+export { default as KubernetesIcon } from './kubernetes-color.svg';
+export { default as GithubActionsIcon } from './githubactions-color.svg';
+export { default as VercelIcon } from './vercel-color.svg';
+export { default as NginxIcon } from './nginx-color.svg';
+export { default as LangchainIcon } from './langchain-color.svg';
+export { default as LanggraphIcon } from './langgraph-color.svg';
+export { default as OpenaiIcon } from './openai-color.svg';
+export { default as HuggingfaceIcon } from './huggingface-color.svg';
+export { default as SentryIcon } from './sentry-color.svg';
+export { default as SwaggerIcon } from './swagger-color.svg';
+export { default as OpentelemetryIcon } from './opentelemetry-color.svg';
+export { default as GrafanaIcon } from './grafana-color.svg';
+export { default as PrometheusIcon } from './prometheus-color.svg';
+
+/* Sourced from grafana.com (Loki/Tempo) and Iconify logos: collection (Pinecone) */
+export { default as LokiIcon } from './loki-color.svg';
+export { default as TempoIcon } from './tempo-color.svg';
+export { default as PineconeIcon } from './pinecone-color.svg';

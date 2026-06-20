@@ -1,18 +1,7 @@
 import React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { AtSign, Github, Globe, Phone } from "lucide-react"
-
-import { Icons } from "../icons"
-import { Badge } from "../ui/badge"
-import { Button } from "../ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../ui/card"
+import { ArrowUpRight, Github, Globe } from "lucide-react"
 
 interface Props {
   title: string
@@ -32,83 +21,97 @@ const ProjectModel = ({
   website,
 }: Props) => {
   return (
-    <>
-      <CardHeader>
-        <CardTitle className="font-heading">{title}</CardTitle>
-        <CardDescription>
-          <Image
-            alt="Image"
-            src={image}
-            width={700}
-            height={475}
-            sizes="100vw"
-            style={{
-              width: "100%",
-              height: "auto",
-            }}
-          />
-        </CardDescription>
-      </CardHeader>
+    <article className="bg-surface">
+      {/* Cover */}
+      <div className="relative aspect-[16/9] w-full overflow-hidden bg-elevated">
+        <Image
+          alt={title}
+          src={image}
+          fill
+          sizes="(min-width: 920px) 920px, 100vw"
+          className="object-cover"
+        />
+      </div>
 
-      <CardContent className="flex flex-col gap-4">
-        <div className="grid w-full grid-cols-1 md:grid-cols-2">
-          {github && (
-            <CardContent className="col-span-1 flex gap-2 pl-0">
-              <Button
-                className="rounded-lg p-2"
-                variant="secondary"
-                size="icon"
+      <div className="space-y-8 p-6 md:p-8">
+        {/* Title */}
+        <header className="space-y-3">
+          <div className="eyebrow">
+            <span>Case</span>
+            <span aria-hidden>—</span>
+            <span>Detail</span>
+          </div>
+          <h2 className="display text-3xl leading-tight sm:text-4xl">
+            {title}
+          </h2>
+        </header>
+
+        {/* External links — quiet inline row */}
+        {(github || website) && (
+          <div className="flex flex-wrap gap-2">
+            {github && (
+              <Link
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-full border border-hairline/70 bg-elevated/40 px-3.5 py-1.5 text-xs font-medium tracking-tight transition-colors hover:border-accent/60 hover:bg-accent-soft/40 hover:text-accent"
               >
-                <Github className="size-8" />
-              </Button>
+                <Github className="size-3.5" strokeWidth={1.75} />
+                Source
+                <ArrowUpRight
+                  className="size-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  strokeWidth={2}
+                />
+              </Link>
+            )}
+            {website && (
+              <Link
+                href={website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 rounded-full border border-hairline/70 bg-elevated/40 px-3.5 py-1.5 text-xs font-medium tracking-tight transition-colors hover:border-accent/60 hover:bg-accent-soft/40 hover:text-accent"
+              >
+                <Globe className="size-3.5" strokeWidth={1.75} />
+                Live site
+                <ArrowUpRight
+                  className="size-3 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  strokeWidth={2}
+                />
+              </Link>
+            )}
+          </div>
+        )}
 
-              <div>
-                <CardTitle className="text-base font-semibold opacity-50">
-                  Github
-                </CardTitle>
-                <CardDescription className="text-sm font-semibold">
-                  <Link href={github} target="_blank" rel="noopener noreferrer">
-                    {github}
-                  </Link>
-                </CardDescription>
-              </div>
-            </CardContent>
-          )}
+        <div className="hairline" />
 
-          {website && (
-            <CardContent className="col-span-1 flex gap-2 pl-0">
-              <Button className="rounded-lg p-2 " variant="secondary">
-                <Globe />
-              </Button>
+        {/* Overview */}
+        <section className="space-y-4">
+          <h3 className="eyebrow">Overview</h3>
+          <div className="space-y-4 text-pretty leading-relaxed text-muted-foreground">
+            {overviews.map((item, index) => (
+              <p key={index}>{item}</p>
+            ))}
+          </div>
+        </section>
 
-              <div>
-                <CardTitle className="text-sm font-semibold opacity-50">
-                  Website
-                </CardTitle>
-                <CardDescription className="text-sm font-semibold">
-                  <Link href={website} target="_blank" rel="noopener noreferrer">
-                    {website}
-                  </Link>
-                </CardDescription>
-              </div>
-            </CardContent>
-          )}
-        </div>
-        <CardTitle className="font-heading">Overview</CardTitle>
-        {overviews.map((item, index) => (
-          <p key={index}>{item}</p>
-        ))}
+        <div className="hairline" />
 
-        <CardTitle className="font-heading">Stack/Technologies</CardTitle>
-        <div className="">
-          {technologies.map((item, index) => (
-            <Badge key={index} className="mb-2 mr-2 text-base">
-              {item}
-            </Badge>
-          ))}
-        </div>
-      </CardContent>
-    </>
+        {/* Stack */}
+        <section className="space-y-4">
+          <h3 className="eyebrow">Stack</h3>
+          <ul className="flex flex-wrap gap-1.5">
+            {technologies.map((item, index) => (
+              <li
+                key={index}
+                className="inline-flex items-center rounded-md border border-hairline/80 bg-elevated/40 px-2.5 py-1 text-xs font-medium tracking-tight"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+    </article>
   )
 }
 

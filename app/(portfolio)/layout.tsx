@@ -9,16 +9,16 @@ interface Props {
 
 export default function PortfolioLayout({ children }: Props) {
   return (
-    <div className="container mx-auto min-h-[80vh] py-4">
-      <section className="grid grid-cols-12 gap-5">
-        <div className="col-span-12 lg:col-span-12 xl:col-span-3 xl:sticky xl:top-4 xl:self-start">
+    <div className="container py-8 lg:py-12">
+      <div className="grid grid-cols-12 gap-6 lg:gap-10">
+        <div className="col-span-12 xl:col-span-4 xl:sticky xl:top-24 xl:self-start">
           <Sidebar />
         </div>
-        <div className="relative col-span-12 pb-20 lg:pb-0 xl:col-span-9">
+        <div className="relative col-span-12 pb-28 lg:pb-0 xl:col-span-8">
           <Navbar />
-          <div>{children}</div>
+          <div className="animate-rise">{children}</div>
         </div>
-      </section>
+      </div>
     </div>
   )
 }

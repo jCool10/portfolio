@@ -9,10 +9,7 @@ const Timeline = React.forwardRef<
   return (
     <ol
       ref={ref}
-      className={cn(
-        "relative border-s border-gray-200 dark:border-gray-700",
-        className
-      )}
+      className={cn("relative border-s border-hairline/80", className)}
       {...props}
     />
   )
@@ -23,7 +20,13 @@ const TimelineItem = React.forwardRef<
   HTMLLIElement,
   React.HTMLAttributes<HTMLLIElement>
 >(({ className, ...props }, ref) => {
-  return <li ref={ref} className={cn("mb-5 ms-4", className)} {...props} />
+  return (
+    <li
+      ref={ref}
+      className={cn("relative mb-7 ms-5 last:mb-0", className)}
+      {...props}
+    />
+  )
 })
 
 TimelineItem.displayName = "TimelineItem"
@@ -36,7 +39,7 @@ const TimelineDot = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "absolute -start-1.5  size-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700",
+        "absolute -start-[7px] top-1.5 size-2.5 rounded-full border-2 border-background bg-accent",
         className
       )}
       {...props}
@@ -54,7 +57,7 @@ const TimelineTime = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500",
+        "mb-1 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground",
         className
       )}
       {...props}
@@ -72,7 +75,7 @@ const TimelineTitle = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "text-lg font-semibold text-gray-900 dark:text-white",
+        "font-heading text-base font-medium tracking-tight text-foreground",
         className
       )}
       {...props}
@@ -89,10 +92,7 @@ const TimelineDescription = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={cn(
-        "mb-4 text-base font-normal text-gray-500 dark:text-gray-400",
-        className
-      )}
+      className={cn("mt-0.5 text-sm text-muted-foreground", className)}
       {...props}
     />
   )
