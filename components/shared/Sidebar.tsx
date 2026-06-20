@@ -11,6 +11,7 @@ import {
 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+
 import { Button } from "../ui/button"
 
 const socialLinks = [
@@ -160,7 +161,7 @@ const Sidebar = () => {
             "shadow-soft transition-all duration-200 group/cv"
           )}
         >
-          <Link href="/CV_Hoang Ngoc Loc_Web.pdf" download>
+          <Link href="/CV - Hoang Ngoc Loc.pdf" download>
             <Download
               className="size-4 transition-transform duration-200 group-hover/cv:translate-y-0.5"
               strokeWidth={2}
